@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1:9092, 127.0.0.1:9093, 127.0.0.1:9094
+          required-acks: all
+          auto-create-topics: false
+      bindings:
+        consume-in-0:
+          destination: message
+          group: reactor-group
