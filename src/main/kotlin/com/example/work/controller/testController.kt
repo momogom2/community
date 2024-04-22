@@ -1,14 +1,10 @@
 package com.example.work.controller
 
-import com.example.work.service.KafkaMessageListenerController
-import org.apache.kafka.clients.consumer.ConsumerConfig
+import com.example.work.service.KafkaMessageListenerService
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.clients.producer.ProducerRecord
-import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.kafka.common.serialization.StringSerializer
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.Bean
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -17,7 +13,7 @@ import reactor.core.publisher.Mono
 @RequestMapping("/kafka")
 @RestController
 class testController (
-    private val kafkaMessageListenerController: KafkaMessageListenerController,
+    private val kafkaMessageListenerService: KafkaMessageListenerService,
 ) {
 
     @GetMapping("")
@@ -27,12 +23,12 @@ class testController (
 
     @GetMapping("/stop")
     fun stop() {
-        kafkaMessageListenerController.turnOffListener()
+        kafkaMessageListenerService.turnOffListener()
     }
 
     @GetMapping("/start")
     fun start() {
-        kafkaMessageListenerController.turnOnListener()
+        kafkaMessageListenerService.turnOnListener()
     }
 
     @GetMapping("/send")

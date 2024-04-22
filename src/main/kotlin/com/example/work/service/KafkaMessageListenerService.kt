@@ -4,10 +4,8 @@ import com.example.work.config.logger
 import com.google.common.util.concurrent.RateLimiter
 import com.sun.management.OperatingSystemMXBean
 import org.apache.kafka.clients.consumer.ConsumerRecord
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry
-import org.springframework.kafka.core.ConsumerFactory
 import org.springframework.kafka.support.Acknowledgment
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.scheduling.annotation.Scheduled
@@ -18,7 +16,7 @@ import java.lang.management.ThreadMXBean
 
 @Component
 @EnableScheduling
-class KafkaMessageListenerController(
+class KafkaMessageListenerService(
     private val endpointRegistry: KafkaListenerEndpointRegistry,
 ) {
 
